@@ -3,7 +3,7 @@ import { NavLink } from 'react-router';
 import { AuthContext } from '../Auth/AuthProvider';
 import { MdDarkMode, MdOutlineDarkMode } from 'react-icons/md';
 
-const Header = () => {
+const Navbar = () => {
     const { name } = useContext(AuthContext);
     const [isDark, setIsDark] = useState(false);
     console.log(name)
@@ -51,4 +51,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default Navbar;
