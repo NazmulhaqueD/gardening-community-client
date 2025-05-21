@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router';
 import { AuthContext } from '../Auth/AuthProvider';
+import Swal from 'sweetalert2';
 
 const Register = () => {
 
@@ -16,10 +17,34 @@ const Register = () => {
         // sign up 
         signUp(email, password)
             .then(result => {
+                const user = {
+                    name,
+                    email,
+                    photo,
+                    creationTime: result.user?.metadata.creationTime,
+                    lastSignInTime: result.user?.metadata.lastSignInTime,
+                }
                 setUser(result.user)
                 profileUpdate(name, photo)
                     .then(() => {
-                        alert('profile created successful')
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json',
+                            },
+                            body: JSON.stringify(user)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data?.insertedId) {
+                                    Swal.fire({
+                                        icon: "success",
+                                        title: "You are create an account successfully",
+                                        showConfirmButton: false,
+                                        timer: 3000
+                                    });
+                                }
+                            })
                     })
                     .catch(error => {
                         console.log(error.message)
@@ -35,6 +60,31 @@ const Register = () => {
         signInWithGoogle()
             .then(result => {
                 setUser(result.user);
+                const user = {
+                    name: result.user?.displayName,
+                    email: result.user?.email,
+                    photo: result.user?.photoURL,
+                    creationTime: result.user?.metadata.creationTime,
+                    lastSignInTime: result.user?.metadata.lastSignInTime,
+                }
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers: {
+                        'content-type': 'application/json',
+                    },
+                    body: JSON.stringify(user)
+                })
+                    .then(res => res.json())
+                    .then((data) => {
+                        Swal.fire({
+                            position: "top-end",
+                            icon: "success",
+                            title: "You are loggedIn successfully",
+                            showConfirmButton: false,
+                            timer: 1500
+                        });
+                        console.log(data)
+                    })
                 console.log(result.user);
                 // alert('signIn successful')
             })

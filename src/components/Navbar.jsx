@@ -18,14 +18,14 @@ const Navbar = () => {
         <NavLink to='/login'><li>Login</li></NavLink>
     </>
 
-    const handleLogOut=()=>{
+    const handleLogOut = () => {
         logOut()
-        .then(()=>{
-            alert('LogOut successful')
-        })
-        .catch(error=>{
-            console.log(error.message)
-        })
+            .then(() => {
+                alert('LogOut successful')
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
     }
 
     useEffect(() => {
@@ -67,9 +67,11 @@ const Navbar = () => {
                                         <button onClick={handleLogOut} className={`absolute btn transition-all duration-300 bg-green-300 px-4 py-2 rounded-xl right-0 ${dropDownOpen ? 'top-[60px]' : 'top-[-60px]'} `}>LogOut</button>
                                     </span>
                                     :
-                                    <button className='btn btn-primary'>
-                                        SignUp
-                                    </button>
+                                    <NavLink to='/login'>
+                                        <button className='btn btn-primary'>
+                                            SignUp
+                                        </button>
+                                    </NavLink>
                             }
                         </div>
                     </div>
