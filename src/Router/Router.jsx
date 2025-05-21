@@ -10,6 +10,7 @@ import MyTips from "../Pages/MyTips";
 import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import ExploreGardeners from "../Pages/ExploreGardeners";
+import TipDetails from "../Pages/TipDetails";
 
 
 export const router = createBrowserRouter([
@@ -29,6 +30,8 @@ export const router = createBrowserRouter([
       },
       {
         path: '/browseTips',
+        loader: ()=>fetch('http://localhost:5000/shareTips'),
+        hydrateFallbackElement: <p>Loading...........</p>,
         element: <BrowseTips></BrowseTips>
       },
       {
@@ -46,6 +49,11 @@ export const router = createBrowserRouter([
       {
         path: '/register',
         element: <Register></Register>
+      },
+      {
+        path: '/tipDetails/:id',
+        loader: ({params})=>fetch(`http://localhost:5000/shareTips/${params.id}`),
+        element: <TipDetails></TipDetails>
       }
     ]
   },
