@@ -9,7 +9,11 @@ const Navbar = () => {
     console.log(name)
     const navLink = <>
         <NavLink to='/'><li>Home</li></NavLink>
-        <NavLink to='/tips'><li>Tips</li></NavLink>
+        <NavLink to='/exploreGardeners'><li>Explore Gardeners</li></NavLink>
+        <NavLink to='/browseTips'><li>Browse Tips</li></NavLink>
+        <NavLink to='/shareTips'><li>Share a Garden Tip</li></NavLink>
+        <NavLink to='/myTips'><li>My Tips</li></NavLink>
+        <NavLink to='/login'><li>Login</li></NavLink>
     </>
 
     useEffect(() => {
@@ -40,7 +44,7 @@ const Navbar = () => {
                     </div>
                     <div className="navbar-end">
                         <button onClick={() => setIsDark(!isDark)} className='m-1 p-1 cursor-pointer rounded-full border-2 border-e-teal-400'>
-                            {isDark ?  <MdOutlineDarkMode size={25} />
+                            {isDark ? <MdOutlineDarkMode size={25} />
                                 : <MdDarkMode size={25} />}
                         </button>
                         <a className="btn">Button</a>
