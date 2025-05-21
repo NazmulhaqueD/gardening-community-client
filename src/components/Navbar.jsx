@@ -4,9 +4,11 @@ import { AuthContext } from '../Auth/AuthProvider';
 import { MdDarkMode, MdOutlineDarkMode } from 'react-icons/md';
 
 const Navbar = () => {
-    const { name } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
     const [isDark, setIsDark] = useState(false);
-    console.log(name)
+    const [dropDownOpen, setDropDownOpen] = useState(false)
+    console.log(user?.photoURL, dropDownOpen)
+
     const navLink = <>
         <NavLink to='/'><li>Home</li></NavLink>
         <NavLink to='/exploreGardeners'><li>Explore Gardeners</li></NavLink>
@@ -15,6 +17,16 @@ const Navbar = () => {
         <NavLink to='/myTips'><li>My Tips</li></NavLink>
         <NavLink to='/login'><li>Login</li></NavLink>
     </>
+
+    const handleLogOut=()=>{
+        logOut()
+        .then(()=>{
+            alert('LogOut successful')
+        })
+        .catch(error=>{
+            console.log(error.message)
+        })
+    }
 
     useEffect(() => {
         document.querySelector('html').setAttribute('data-theme', isDark ? 'dark' : 'light')
@@ -47,7 +59,19 @@ const Navbar = () => {
                             {isDark ? <MdOutlineDarkMode size={25} />
                                 : <MdDarkMode size={25} />}
                         </button>
-                        <a className="btn">Button</a>
+                        <div>
+                            {
+                                user ?
+                                    <span className='relative'>
+                                        <img onClick={() => setDropDownOpen(!dropDownOpen)} className='w-12 h-12 cursor-pointer rounded-full' src={user?.photoURL} alt="" />
+                                        <button onClick={handleLogOut} className={`absolute btn transition-all duration-300 bg-green-300 px-4 py-2 rounded-xl right-0 ${dropDownOpen ? 'top-[60px]' : 'top-[-60px]'} `}>LogOut</button>
+                                    </span>
+                                    :
+                                    <button className='btn btn-primary'>
+                                        SignUp
+                                    </button>
+                            }
+                        </div>
                     </div>
                 </div>
             </nav>
@@ -56,3 +80,4 @@ const Navbar = () => {
 };
 
 export default Navbar;
+

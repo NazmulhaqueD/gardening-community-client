@@ -4,20 +4,27 @@ import { AuthContext } from '../Auth/AuthProvider';
 
 const Register = () => {
 
-    const { signUp, signInWithGoogle } = useContext(AuthContext);
+    const { signUp, signInWithGoogle, profileUpdate, setUser } = useContext(AuthContext);
 
     const handleSignUp = (e) => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
-        const { email, password } = Object.fromEntries(formData.entries());
+        const { name, photo, email, password } = Object.fromEntries(formData.entries());
         console.log(email, password)
 
         // sign up 
         signUp(email, password)
             .then(result => {
-                console.log(result.user)
-                alert('signIn successful')
+                setUser(result.user)
+                profileUpdate(name, photo)
+                    .then(() => {
+                        alert('profile created successful')
+                    })
+                    .catch(error => {
+                        console.log(error.message)
+                    })
+                console.log(result.user);
             })
             .catch(error => {
                 console.log(error.message)
@@ -26,13 +33,14 @@ const Register = () => {
 
     const handleSignUpWithGoogle = () => {
         signInWithGoogle()
-        .then(result=>{
-            console.log(result.user) 
-            alert('signIn successful')
-        })
-        .catch(error=>{
-            console.log(error);
-        })
+            .then(result => {
+                setUser(result.user);
+                console.log(result.user);
+                // alert('signIn successful')
+            })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     return (

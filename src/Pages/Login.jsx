@@ -1,22 +1,44 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { NavLink } from 'react-router';
+import { AuthContext } from '../Auth/AuthProvider';
 
 const Login = () => {
 
+    const { signIn, setUser } = useContext(AuthContext);
 
+    const handleSignIn = (e) => {
+        e.preventDefault();
+        const email = e.target.email.value;
+        const password = e.target.password.value;
+
+        // sign in with firebase
+        signIn(email, password)
+            .then(result => {
+                console.log(result.user)
+                setUser(result.user)
+            })
+            .catch(error => {
+                console.log(error.message)
+            })
+        console.log(email, password)
+    }
 
     return (
 
         <div className="card bg-base-100 max-w-sm mx-auto my-24 shrink-0 shadow-2xl">
             <h1 className="text-5xl font-bold text-center">Login now!</h1>
             <div className="card-body">
-                <form className='space-y-4'>
+                <form onSubmit={handleSignIn} className='space-y-4'>
+
                     <label className="label">Email</label>
                     <input type="email" className="input" name='email' placeholder="Email" />
+
                     <label className="label">Password</label>
                     <input type="password" className="input" name='password' placeholder="Password" />
+
                     <div><a className="link link-hover">Forgot password?</a></div>
                     <button className="btn w-full btn-neutral mt-4">Login</button>
+
                     <p>Don't have an account !!! please
                         <NavLink to='/register' className={'text-teal-500 px-2 text-xl font-semibold'}>Register</NavLink>
                     </p>
