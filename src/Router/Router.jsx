@@ -29,7 +29,9 @@ export const router = createBrowserRouter([
       },
       {
         path: '/exploreGardeners',
-        element: <ExploreGardeners></ExploreGardeners>
+        loader: () => fetch("http://localhost:5000/allGardeners"),
+        element: <ExploreGardeners></ExploreGardeners>,
+        hydrateFallbackElement: <Loader></Loader>       
       },
       {
         path: '/browseTips',

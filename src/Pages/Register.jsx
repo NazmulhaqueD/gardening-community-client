@@ -1,11 +1,12 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 import { AuthContext } from '../Auth/AuthProvider';
 import Swal from 'sweetalert2';
 
 const Register = () => {
 
     const { signUp, signInWithGoogle, profileUpdate, setUser } = useContext(AuthContext);
+    const navigate = useNavigate();
 
     const handleSignUp = (e) => {
         e.preventDefault();
@@ -43,6 +44,7 @@ const Register = () => {
                                         showConfirmButton: false,
                                         timer: 3000
                                     });
+                                    navigate('/')
                                 }
                             })
                     })
@@ -83,6 +85,7 @@ const Register = () => {
                             showConfirmButton: false,
                             timer: 1500
                         });
+                        navigate('/')
                         console.log(data)
                     })
                 console.log(result.user);
