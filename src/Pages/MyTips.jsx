@@ -75,7 +75,7 @@ const MyTips = () => {
                             <td>{tips.category}</td>
                             <td>{tips.availability}</td>
                             <td>12/08/2025</td>
-                            <td><NavLink className={'btn btn-success'}>Update</NavLink></td>
+                            <td><NavLink to={`/updateTip/${tips._id}`} className={'btn btn-success'}>Update</NavLink></td>
                             <td><button onClick={() => handleTipsDelete(tips._id)} className='btn btn-error'>Delete</button></td>
                         </tr>)
                     }

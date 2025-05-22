@@ -10,7 +10,7 @@ const BrowseTips = () => {
         <div className="bg-base-200 py-8 px-4 rounded-b-2xl">
             <h1 className='text-success text-center text-4xl my-8 font-bold'>All Shared Garden Tips : {allShareTips.length}</h1>
             <div className='overflow-x-auto '>
-                <table className="table w-full">
+                <table className="table w-full md:w-8/12 p-4 mx-auto inset-shadow-sm inset-shadow-indigo-500/100 ">
                     {/* head */}
                     <thead>
                         <tr className='text-xl md:text-2xl font-bold text-accent'>
@@ -19,6 +19,7 @@ const BrowseTips = () => {
                             <th><p className='hidden md:block'>Author Name</p></th>
                             <th><p>Category</p></th>
                             <th><p className='hidden md:block'>Thumbnail</p></th>
+                            <th></th>
                             {/* <th><p>Details</p></th> */}
                         </tr>
                     </thead>

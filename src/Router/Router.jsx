@@ -11,6 +11,7 @@ import Login from "../Pages/Login";
 import Register from "../Pages/Register";
 import ExploreGardeners from "../Pages/ExploreGardeners";
 import TipDetails from "../Pages/TipDetails";
+import UpdateTip from "../Pages/UpdateTip";
 
 
 export const router = createBrowserRouter([
@@ -54,6 +55,11 @@ export const router = createBrowserRouter([
         path: '/tipDetails/:id',
         loader: ({params})=>fetch(`http://localhost:5000/shareTips/${params.id}`),
         element: <TipDetails></TipDetails>
+      },
+      {
+        path: '/updateTip/:id',
+        loader: ({params})=>fetch(`http://localhost:5000/shareTips/${params.id}`),
+        element: <UpdateTip></UpdateTip>,
       }
     ]
   },
