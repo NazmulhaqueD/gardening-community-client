@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { NavLink } from 'react-router';
 import { AuthContext } from '../Auth/AuthProvider';
 import { MdDarkMode, MdOutlineDarkMode } from 'react-icons/md';
+import Swal from 'sweetalert2';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -15,13 +16,21 @@ const Navbar = () => {
         <NavLink to='/browseTips'><li>Browse Tips</li></NavLink>
         <NavLink to='/shareTips'><li>Share a Garden Tip</li></NavLink>
         <NavLink to='/myTips'><li>My Tips</li></NavLink>
-        <NavLink to='/login'><li>Login</li></NavLink>
+        {
+            user ? "" : <NavLink to='/login'><li>Login</li></NavLink>
+        }
     </>
 
     const handleLogOut = () => {
         logOut()
             .then(() => {
-                alert('LogOut successful')
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "You are loggedIn successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
             })
             .catch(error => {
                 console.log(error.message)
@@ -47,7 +56,7 @@ const Navbar = () => {
                                 {navLink}
                             </ul>
                         </div>
-                        <a className="btn btn-ghost text-xl">daisyUI</a>
+                        <a className="text-2xl font-semibold text-success">Gardening</a>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1 flex gap-6 font-semibold">

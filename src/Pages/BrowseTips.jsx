@@ -1,15 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { NavLink, useLoaderData } from 'react-router';
 
 const BrowseTips = () => {
 
-    const allShareTips = useLoaderData();
+    const initialAllShareTips = useLoaderData();
+    const [allShareTips, setAllShareTips] = useState(initialAllShareTips)
     console.log(allShareTips);
+
+    const handleSearch = (e) => {
+        e.preventDefault();
+        const select = e.target.selectType.value;
+        if (select === 'All') {
+            return setAllShareTips(initialAllShareTips);
+        }
+
+        const filteredTips = initialAllShareTips.filter(tips => tips.Level === select);
+        setAllShareTips(filteredTips)
+
+        console.log(select, allShareTips);
+    }
 
     return (
         <div className="bg-base-200 py-8 rounded-b-2xl">
             <h1 className='text-success text-center text-2xl md:text-4xl my-8 font-bold'>All Shared Garden Tips : {allShareTips.length}</h1>
             <div className='overflow-x-auto rounded-sm'>
+                <form onSubmit={handleSearch} className='w-full md:w-8/12 mx-auto my-8 relative z-0'>
+                    <select defaultValue="Search by Difficulty Level" name='selectType' className="select w-full select-secondary">
+                        <option disabled={true}>Search by Difficulty Level</option>
+                        <option>All</option>
+                        <option>Easy</option>
+                        <option>Medium</option>
+                        <option>Hard</option>
+                    </select>
+                    <input type="submit" className='btn px-10 absolute right-0 z-10' value={'Search'} />
+                </form>
                 <table className="table w-full md:w-8/12 mx-auto inset-shadow-sm inset-shadow-indigo-500/100 p-4 md:p-8 rounded-2xl">
                     {/* head */}
                     <thead className='bg-gray-300'>
