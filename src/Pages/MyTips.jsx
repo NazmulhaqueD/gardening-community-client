@@ -1,9 +1,51 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
+import { AuthContext } from '../Auth/AuthProvider';
+import { NavLink } from 'react-router';
+
 
 const MyTips = () => {
+
+    const [myTips, setMyTips] = useState(null);
+    const { user } = useContext(AuthContext);
+    console.log(myTips)
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/myTips/${user?.email}`)
+            .then(res => res.json())
+            .then(data => {
+                setMyTips(data)
+            })
+    }, [user])
     return (
-        <div>
-            my tips
+        <div className="overflow-x-auto bg-base-300 py-8 bg">
+            <h1 className='text-success text-3xl md:text-4xl my-8 text-center font-bold'> My Garden Tips (total: {myTips?.length})</h1>
+            <table className="table w-full md:max-w-8/12 mx-auto">
+                {/* head */}
+                <thead className='bg-gray-300 text-xl font-bold text-black'>
+                    <tr>
+                        <th>Title</th>
+                        <th>Category</th>
+                        <th>Status</th>
+                        <th>Date</th>
+                        <th>Update</th>
+                        <th>Delete</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    { 
+                        myTips?.map(tips=><tr
+                        key={tips._id}
+                        >
+                            <td className='py-10'>{tips.title}</td>
+                            <td>{tips.category}</td>
+                            <td>{tips.availability}</td>
+                            <td>12/08/2025</td>
+                            <td><NavLink className={'btn btn-success'}>Update</NavLink></td>
+                            <td><button className='btn btn-error'>Delete</button></td>
+                        </tr>)
+                    }
+                </tbody>
+            </table>
         </div>
     );
 };
