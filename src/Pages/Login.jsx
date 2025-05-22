@@ -1,11 +1,14 @@
 import React, { useContext } from 'react';
-import { NavLink } from 'react-router';
+import { NavLink, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Auth/AuthProvider';
 import Swal from 'sweetalert2';
 
 const Login = () => {
 
     const { signIn, setUser, signInWithGoogle } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
+    console.log(location.state)
 
     const handleSignIn = (e) => {
         e.preventDefault();
@@ -15,8 +18,16 @@ const Login = () => {
         // sign in with firebase
         signIn(email, password)
             .then(result => {
-                console.log(result.user)
+                // console.log(result.user)
                 setUser(result.user)
+                Swal.fire({
+                    position: "top-end",
+                    icon: "success",
+                    title: "You are loggedIn successfully",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate(`${location.state ? location.state : '/'}`)
             })
             .catch(error => {
                 console.log(error.message)
@@ -44,7 +55,7 @@ const Login = () => {
                     body: JSON.stringify(user)
                 })
                     .then(res => res.json())
-                    .then((data) => {
+                    .then(() => {
                         Swal.fire({
                             position: "top-end",
                             icon: "success",
@@ -52,10 +63,8 @@ const Login = () => {
                             showConfirmButton: false,
                             timer: 1500
                         });
-                        console.log(data)
+                        navigate(`${location.state ? location.state : '/'}`)
                     })
-                console.log(result.user);
-                // alert('signIn successful')
             })
             .catch(error => {
                 console.log(error);

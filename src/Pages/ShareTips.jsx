@@ -38,7 +38,7 @@ const ShareTips = () => {
             <h1 className='text-success text-4xl font-bold my-8 text-center'>Share A Garden Tips</h1>
 
             <div className='w-full md:w-9/12 mx-auto '>
-                <form onSubmit={handleShareTips} className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+                <form onSubmit={handleShareTips} className='grid grid-cols-1 md:grid-cols-2 gap-8 inset-shadow-sm inset-shadow-indigo-500/50 rounded-2xl p-8'>
                     <div className='space-y-2'>
                         <label className="label text-xl font-semibold">Name</label>
                         <input type="text" name='name' value={user?.displayName} className="input w-full input-success" />

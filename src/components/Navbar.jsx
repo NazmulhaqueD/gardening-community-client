@@ -64,7 +64,7 @@ const Navbar = () => {
                                 user ?
                                     <span className='relative'>
                                         <img onClick={() => setDropDownOpen(!dropDownOpen)} className='w-12 h-12 cursor-pointer rounded-full' src={user?.photoURL} alt="" />
-                                        <button onClick={handleLogOut} className={`absolute btn transition-all duration-300 bg-green-300 px-4 py-2 rounded-xl right-0 ${dropDownOpen ? 'top-[60px]' : 'top-[-60px]'} `}>LogOut</button>
+                                        <button onClick={handleLogOut} className={`absolute btn transition-all duration-300 bg-green-300 px-4 py-2 rounded-xl right-0 shadow-2xl ${dropDownOpen ? 'top-[60px]' : 'top-[-60px]'} `}>LogOut</button>
                                     </span>
                                     :
                                     <NavLink to='/login'>

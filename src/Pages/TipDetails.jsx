@@ -9,7 +9,7 @@ const TipDetails = () => {
             <div className="w-full md:max-w-9/12 mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 py-16 px-4">
                 <figure className='col-span-12 md:col-span-7'>
                     <img
-                        className='max-h-[500px] object-cover rounded-2xl'
+                        className='max-h-[600px] w-full object-center object-cover rounded-2xl'
                         src={tips.photo}
                         alt="Album" />
                 </figure>

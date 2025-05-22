@@ -12,6 +12,8 @@ import Register from "../Pages/Register";
 import ExploreGardeners from "../Pages/ExploreGardeners";
 import TipDetails from "../Pages/TipDetails";
 import UpdateTip from "../Pages/UpdateTip";
+import PrivateRout from "../components/PrivateRout";
+import Loader from "../components/Loader";
 
 
 export const router = createBrowserRouter([
@@ -21,8 +23,8 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: ()=>fetch('http://localhost:5000/gardeners'),
-        hydrateFallbackElement: <p>loading</p>,
+        loader: () => fetch('http://localhost:5000/gardeners'),
+        hydrateFallbackElement: <Loader></Loader>,
         element: <Home></Home>
       },
       {
@@ -31,17 +33,17 @@ export const router = createBrowserRouter([
       },
       {
         path: '/browseTips',
-        loader: ()=>fetch('http://localhost:5000/shareTips'),
-        hydrateFallbackElement: <p>Loading...........</p>,
+        loader: () => fetch('http://localhost:5000/shareTips'),
+        hydrateFallbackElement: <Loader></Loader>,
         element: <BrowseTips></BrowseTips>
       },
       {
         path: '/shareTips',
-        element: <ShareTips></ShareTips>
+        element: <PrivateRout><ShareTips></ShareTips></PrivateRout>
       },
       {
         path: '/myTips',
-        element: <MyTips></MyTips>
+        element: <PrivateRout><MyTips></MyTips></PrivateRout>
       },
       {
         path: '/login',
@@ -53,12 +55,14 @@ export const router = createBrowserRouter([
       },
       {
         path: '/tipDetails/:id',
-        loader: ({params})=>fetch(`http://localhost:5000/shareTips/${params.id}`),
-        element: <TipDetails></TipDetails>
+        loader: ({ params }) => fetch(`http://localhost:5000/shareTips/${params.id}`),
+        hydrateFallbackElement: <Loader></Loader>,
+        element: <PrivateRout><TipDetails></TipDetails></PrivateRout>
       },
       {
         path: '/updateTip/:id',
-        loader: ({params})=>fetch(`http://localhost:5000/shareTips/${params.id}`),
+        loader: ({ params }) => fetch(`http://localhost:5000/shareTips/${params.id}`),
+        hydrateFallbackElement: <Loader></Loader>,
         element: <UpdateTip></UpdateTip>,
       }
     ]
