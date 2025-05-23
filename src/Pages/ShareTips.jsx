@@ -10,7 +10,9 @@ const ShareTips = () => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
-        const shareTipsData = Object.fromEntries(formData.entries());
+        const shareTips = Object.fromEntries(formData.entries());
+        const shareTipsData = { totalLiked: 0, likedUsers: [], ...shareTips }
+        console.log(shareTipsData)
 
         // fetch post data in mongodb
         fetch('http://localhost:5000/shareTips', {
