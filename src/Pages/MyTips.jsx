@@ -10,7 +10,7 @@ const MyTips = () => {
     const { user } = useContext(AuthContext);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/myTips/${user?.email}`)
+        fetch(`https://gardening-server-six.vercel.app/myTips/${user?.email}`)
             .then(res => res.json())
             .then(data => {
                 setMyTips(data)
@@ -29,7 +29,7 @@ const MyTips = () => {
             confirmButtonText: "Yes, delete it!"
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/myTips/${id}`, { method: 'DELETE' })
+                fetch(`https://gardening-server-six.vercel.app/myTips/${id}`, { method: 'DELETE' })
                     .then(res => res.json())
                     .then(data => {
                         if (data.deletedCount) {

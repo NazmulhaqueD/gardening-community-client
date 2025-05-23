@@ -15,7 +15,7 @@ const ShareTips = () => {
         console.log(shareTipsData)
 
         // fetch post data in mongodb
-        fetch('http://localhost:5000/shareTips', {
+        fetch('https://gardening-server-six.vercel.app/shareTips', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',

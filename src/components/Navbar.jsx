@@ -3,6 +3,7 @@ import { NavLink } from 'react-router';
 import { AuthContext } from '../Auth/AuthProvider';
 import { MdDarkMode, MdOutlineDarkMode } from 'react-icons/md';
 import Swal from 'sweetalert2';
+import { Tooltip } from 'react-tooltip';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -72,7 +73,15 @@ const Navbar = () => {
                             {
                                 user ?
                                     <span className='relative'>
-                                        <img onClick={() => setDropDownOpen(!dropDownOpen)} className='w-12 h-12 cursor-pointer rounded-full' src={user?.photoURL} alt="" />
+                                        <img
+                                            data-tooltip-id="name"
+                                            data-tooltip-content={user?.displayName}
+                                            onClick={() => setDropDownOpen(!dropDownOpen)} className='w-12 h-12 cursor-pointer rounded-full' src={user?.photoURL} alt="" />
+                                        <Tooltip
+                                            id="name"
+                                            place="bottom"
+                                            delayShow={400}
+                                        />
                                         <button onClick={handleLogOut} className={`absolute btn transition-all duration-300 bg-green-300 px-4 py-2 rounded-xl right-0 shadow-2xl ${dropDownOpen ? 'top-[60px]' : 'top-[-60px]'} `}>LogOut</button>
                                     </span>
                                     :
@@ -92,3 +101,25 @@ const Navbar = () => {
 
 export default Navbar;
 
+
+{/* <div>
+    <button
+        onClick={() => handleDelete(plant._id)}
+        data-tooltip-id="delete-tooltip"
+        data-tooltip-content="Click to Delete Plant"
+        className="btn bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded-lg shadow transition"
+    >
+        Delete
+    </button>
+    <Tooltip
+        id="delete-tooltip"
+        place="bottom"
+        delayShow={400}
+        style={{
+            fontSize: "12px",
+            padding: "6px",
+            borderRadius: "6px",
+        }}
+    />
+
+</div> */}

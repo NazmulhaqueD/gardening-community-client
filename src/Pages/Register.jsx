@@ -28,7 +28,7 @@ const Register = () => {
                 setUser(result.user)
                 profileUpdate(name, photo)
                     .then(() => {
-                        fetch('http://localhost:5000/users', {
+                        fetch('https://gardening-server-six.vercel.app/users', {
                             method: 'POST',
                             headers: {
                                 'content-type': 'application/json',
@@ -69,7 +69,7 @@ const Register = () => {
                     creationTime: result.user?.metadata.creationTime,
                     lastSignInTime: result.user?.metadata.lastSignInTime,
                 }
-                fetch('http://localhost:5000/users', {
+                fetch('https://gardening-server-six.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json',

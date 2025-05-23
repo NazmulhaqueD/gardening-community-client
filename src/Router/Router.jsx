@@ -23,19 +23,19 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        loader: () => fetch('http://localhost:5000/gardeners'),
+        loader: () => fetch('https://gardening-server-six.vercel.app/gardeners'),
         hydrateFallbackElement: <Loader></Loader>,
         element: <Home></Home>
       },
       {
         path: '/exploreGardeners',
-        loader: () => fetch("http://localhost:5000/allGardeners"),
+        loader: () => fetch("https://gardening-server-six.vercel.app/allGardeners"),
         element: <ExploreGardeners></ExploreGardeners>,
         hydrateFallbackElement: <Loader></Loader>       
       },
       {
         path: '/browseTips',
-        loader: () => fetch('http://localhost:5000/shareTips'),
+        loader: () => fetch('https://gardening-server-six.vercel.app/shareTips'),
         hydrateFallbackElement: <Loader></Loader>,
         element: <BrowseTips></BrowseTips>
       },
@@ -57,13 +57,13 @@ export const router = createBrowserRouter([
       },
       {
         path: '/tipDetails/:id',
-        loader: ({ params }) => fetch(`http://localhost:5000/shareTips/${params.id}`),
+        loader: ({ params }) => fetch(`https://gardening-server-six.vercel.app/shareTips/${params.id}`),
         hydrateFallbackElement: <Loader></Loader>,
         element: <PrivateRout><TipDetails></TipDetails></PrivateRout>
       },
       {
         path: '/updateTip/:id',
-        loader: ({ params }) => fetch(`http://localhost:5000/shareTips/${params.id}`),
+        loader: ({ params }) => fetch(`https://gardening-server-six.vercel.app/shareTips/${params.id}`),
         hydrateFallbackElement: <Loader></Loader>,
         element: <UpdateTip></UpdateTip>,
       }

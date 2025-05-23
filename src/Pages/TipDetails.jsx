@@ -3,6 +3,9 @@ import { useLoaderData, useParams } from 'react-router';
 import { AuthContext } from '../Auth/AuthProvider';
 import { GrLike } from 'react-icons/gr';
 import { BiSolidDislike } from 'react-icons/bi';
+import { AiFillLike, AiOutlineLike } from 'react-icons/ai';
+import { Tooltip } from 'react-tooltip'
+import 'react-tooltip/dist/react-tooltip.css'
 
 const TipDetails = () => {
 
@@ -15,7 +18,7 @@ const TipDetails = () => {
     console.log(likeCount);
 
     useEffect(() => {
-        fetch(`http://localhost:5000/shareTips/${id}`)
+        fetch(`https://gardening-server-six.vercel.app/shareTips/${id}`)
             .then(res => res.json())
             .then(data => {
                 setLikeCount(data.totalLiked)
@@ -38,7 +41,7 @@ const TipDetails = () => {
             name: user.displayName,
         }
 
-        fetch(`http://localhost:5000/shareTipsUpdate/${id}`, {
+        fetch(`https://gardening-server-six.vercel.app/shareTipsUpdate/${id}`, {
             method: 'PATCH',
             headers: {
                 'content-type': 'application/json',
@@ -74,14 +77,14 @@ const TipDetails = () => {
                     <div className='pb-8'>
                         <span className='flex gap-2'><p className='text-teal-400 text-xl'>{tips.availability}</p> , by <p className='text-teal-400 text-xl italic'>{tips.name}</p></span>
                     </div>
-                   
+
                     <div className='absolute bottom-0 flex gap-2 items-center'>
                         <button onClick={handleLiked} >
                             {
-                                liked ? <BiSolidDislike size={40} /> : <GrLike size={40} fill='' />
+                                liked ? <AiFillLike size={30} /> : <AiOutlineLike size={30} />
                             }
                         </button>
-                         <p className='text-2xl'>total like: <span className='text-success font-bold'> {likeCount}</span> </p>
+                        <p className='text-2xl'>total like: <span className='text-success font-bold'> {likeCount}</span> </p>
                     </div>
                 </div>
             </div>
@@ -90,3 +93,5 @@ const TipDetails = () => {
 };
 
 export default TipDetails;
+
+

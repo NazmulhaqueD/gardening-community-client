@@ -7,7 +7,7 @@ const TopTrending = () => {
     console.log(topTips)
 
     useEffect(() => {
-        fetch('http://localhost:5000/topLikedTips')
+        fetch('https://gardening-server-six.vercel.app/topLikedTips')
             .then(res => res.json())
             .then(data => setTopTips(data));
     }, [])
