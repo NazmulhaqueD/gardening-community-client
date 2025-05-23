@@ -5,15 +5,6 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 
 const Banner = () => {
 
-    //   modules={[Pagination, Autoplay]}
-    //                 spaceBetween={20}
-    //                 slidesPerView={1}
-    //                 pagination={{ clickable: true }}
-    //                 autoplay={{ delay: 3000 }}
-    //                 breakpoints={{
-    //                     768: { slidesPerView: 2 },
-    //                     1024: { slidesPerView: 3 }
-    //                 }}
     return (
         <div className='rounded-2xl my-8 md:my-16'>
             <Swiper

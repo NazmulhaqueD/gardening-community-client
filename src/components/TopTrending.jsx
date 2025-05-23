@@ -23,7 +23,7 @@ const TopTrending = () => {
                     >
                         <div className='p-4 flex flex-col gap-4'>
                             <div>
-                                <img className='h-72 md:h-96 rounded-2xl' src={tips.image} alt="" />
+                                <img className='h-72 w-full md:h-96 rounded-2xl' src={tips.image} alt="" />
                             </div>
                             <h2 className='text-xl font-semibold text-teal-400'>{tips.title}</h2>
                             <p className='italic font-thin text-xl'>{tips.description}</p>
