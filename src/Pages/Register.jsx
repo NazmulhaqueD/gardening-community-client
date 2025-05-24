@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { NavLink, useNavigate } from 'react-router';
 import { AuthContext } from '../Auth/AuthProvider';
 import Swal from 'sweetalert2';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Register = () => {
 
@@ -16,6 +17,12 @@ const Register = () => {
         console.log(email, password)
 
         // sign up 
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
+        if (!passwordRegex.test(password)) {
+            toast.error("Password must be at least 8 characters long and include uppercase, lowercase, and a special character.");
+            return;
+        }
+
         signUp(email, password)
             .then(result => {
                 const user = {
@@ -49,12 +56,12 @@ const Register = () => {
                             })
                     })
                     .catch(error => {
-                        console.log(error.message)
+                        toast.error(`${error.message}, please try again`)
                     })
                 console.log(result.user);
             })
             .catch(error => {
-                console.log(error.message)
+                toast.error(`${error.message}, please try again`)
             })
     }
 
@@ -88,11 +95,9 @@ const Register = () => {
                         navigate('/')
                         console.log(data)
                     })
-                console.log(result.user);
-                // alert('signIn successful')
             })
             .catch(error => {
-                console.log(error);
+                toast.error(`${error.message}, please try`)
             })
     }
 
@@ -102,23 +107,23 @@ const Register = () => {
             <div className="card-body">
                 <form onSubmit={handleSignUp} className='space-y-4'>
                     <label className="label">Name</label>
-                    <input type="text" className="input" name='name' placeholder="name" />
+                    <input type="text" className="input" name='name' placeholder="name" required  />
 
                     <label className="label">Email</label>
-                    <input type="email" className="input" name='email' placeholder="Email" />
+                    <input type="email" className="input" name='email' placeholder="Email" required  />
 
                     <label className="label">Photo</label>
-                    <input type="text" className="input" name='photo' placeholder="Photo URL" />
+                    <input type="text" className="input" name='photo' placeholder="Photo URL" required  />
 
                     <label className="label">Password</label>
-                    <input type="password" className="input" name='password' placeholder="Password" />
+                    <input type="password" className="input" name='password' placeholder="Password" required  />
 
                     <div><a className="link link-hover">Forgot password?</a></div>
-                    <button className="btn w-full btn-neutral mt-4">Login</button>
+                    <button className="btn w-full btn-neutral mt-4">SignUp</button>
 
                     <button onClick={handleSignUpWithGoogle} type='button' className="btn w-full bg-white text-black border-[#e5e5e5]">
                         <svg aria-label="Google logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><g><path d="m0 0H512V512H0" fill="#fff"></path><path fill="#34a853" d="M153 292c30 82 118 95 171 60h62v48A192 192 0 0190 341"></path><path fill="#4285f4" d="m386 400a140 175 0 0053-179H260v74h102q-7 37-38 57"></path><path fill="#fbbc02" d="m90 341a208 200 0 010-171l63 49q-12 37 0 73"></path><path fill="#ea4335" d="m153 219c22-69 116-109 179-50l55-54c-78-75-230-72-297 55"></path></g></svg>
-                        Login with Google
+                        SignUp with Google
                     </button>
 
                     <p>Already have an account !!! please
@@ -126,6 +131,7 @@ const Register = () => {
                     </p>
                 </form>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

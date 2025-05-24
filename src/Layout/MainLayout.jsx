@@ -5,7 +5,7 @@ import Navbar from '../components/Navbar';
 
 const MainLayout = () => {
     return (
-        <div className='md:max-w-11/12 mx-auto p-2'>
+        <div className='md:max-w-11/12 mx-auto'>
             {/* <Header></Header> */}
             <Navbar></Navbar>
             <div className='min-h-[90vh]'>

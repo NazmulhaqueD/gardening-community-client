@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../Auth/AuthProvider';
 import Swal from 'sweetalert2';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Login = () => {
 
@@ -30,9 +31,8 @@ const Login = () => {
                 navigate(`${location.state ? location.state : '/'}`)
             })
             .catch(error => {
-                console.log(error.message)
+                toast.error(`${error.message}, please try again`)
             })
-        console.log(email, password)
     }
 
     // signIn with google
@@ -67,7 +67,7 @@ const Login = () => {
                     })
             })
             .catch(error => {
-                console.log(error);
+                toast.error(`${error.message}, please try again`)
             })
     }
 
@@ -96,6 +96,7 @@ const Login = () => {
                     </p>
                 </form>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

@@ -16,4 +16,5 @@
 
 a.active {
   color: teal;
+  border-bottom: 2px solid green;
 }

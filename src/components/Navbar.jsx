@@ -12,13 +12,13 @@ const Navbar = () => {
     console.log(user?.photoURL, dropDownOpen)
 
     const navLink = <>
-        <NavLink className='text-[16px] md:text-xl font-bold md:mx-4' to='/'><li>Home</li></NavLink>
-        <NavLink className='text-[16px] md:text-xl font-bold md:mx-4' to='/exploreGardeners'><li>Explore Gardeners</li></NavLink>
-        <NavLink className='text-[16px] md:text-xl font-bold md:mx-4' to='/browseTips'><li>Browse Tips</li></NavLink>
-        <NavLink className='text-[16px] md:text-xl font-bold md:mx-4' to='/shareTips'><li>Share a Garden Tip</li></NavLink>
-        <NavLink className='text-[16px] md:text-xl font-bold md:mx-4' to='/myTips'><li>My Tips</li></NavLink>
+        <NavLink className='text-[16px] md:text-xl font-bold ' to='/'><li>Home</li></NavLink>
+        <NavLink className='text-[16px] md:text-xl font-bold ' to='/exploreGardeners'><li>Explore Gardeners</li></NavLink>
+        <NavLink className='text-[16px] md:text-xl font-bold ' to='/browseTips'><li>Browse Tips</li></NavLink>
+        <NavLink className='text-[16px] md:text-xl font-bold ' to='/shareTips'><li>Share a Garden Tip</li></NavLink>
+        <NavLink className='text-[16px] md:text-xl font-bold ' to='/myTips'><li>My Tips</li></NavLink>
         {
-            user ? "" : <NavLink to='/login'><li>Login</li></NavLink>
+            user ? "" : <NavLink className='text-[16px] md:text-xl font-bold' to='/login'><li>Login</li></NavLink>
         }
     </>
 
@@ -45,7 +45,7 @@ const Navbar = () => {
     return (
         <div>
             <nav>
-                <div className="navbar bg-base-100 shadow-sm">
+                <div className="navbar bg-base-200 shadow-sm">
                     <div className="navbar-start">
                         <div className="dropdown">
                             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -57,7 +57,7 @@ const Navbar = () => {
                                 {navLink}
                             </ul>
                         </div>
-                        <a className="text-2xl font-semibold text-success">Gardening</a>
+                        <a className="text-2xl md:text-3xl font-bold text-success">Gardening</a>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1 flex gap-6 font-semibold">
@@ -101,25 +101,3 @@ const Navbar = () => {
 
 export default Navbar;
 
-
-{/* <div>
-    <button
-        onClick={() => handleDelete(plant._id)}
-        data-tooltip-id="delete-tooltip"
-        data-tooltip-content="Click to Delete Plant"
-        className="btn bg-green-600 hover:bg-green-700 text-white px-4 py-1 rounded-lg shadow transition"
-    >
-        Delete
-    </button>
-    <Tooltip
-        id="delete-tooltip"
-        place="bottom"
-        delayShow={400}
-        style={{
-            fontSize: "12px",
-            padding: "6px",
-            borderRadius: "6px",
-        }}
-    />
-
-</div> */}
