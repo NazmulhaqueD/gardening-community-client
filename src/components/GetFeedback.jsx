@@ -2,6 +2,7 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../Auth/AuthProvider';
 import { Typewriter } from 'react-simple-typewriter';
 import { format } from 'date-fns';
+import { toast, ToastContainer } from 'react-toastify';
 
 const GetFeedback = () => {
 
@@ -17,9 +18,8 @@ const GetFeedback = () => {
         const newDate = format(new Date(), 'EEE, MMMM d, yyyy, hh:mm a');
         feedBack.date = newDate;
 
-
         // send data in database from client site
-        fetch('http://localhost:5000/feedBack', {
+        fetch('https://gardening-server-six.vercel.app/feedBack', {
             method: 'POST',
             headers: {
                 'content-type': 'application/json',
@@ -28,7 +28,10 @@ const GetFeedback = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data)
+                if (data.acknowledged) {
+                    toast(`We see your feedback,${user?.displayName}`);
+                    e.target.reset()
+                }
             })
     }
 
@@ -77,6 +80,7 @@ const GetFeedback = () => {
                     </div>
                 </form>
             </div>
+            <ToastContainer></ToastContainer>
         </div>
     );
 };

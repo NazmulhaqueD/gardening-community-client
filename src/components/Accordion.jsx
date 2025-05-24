@@ -6,7 +6,7 @@ const Accordion = () => {
     const [accordions, setAccordions] = useState([]);
     console.log(accordions)
     useEffect(() => {
-        fetch('http://localhost:5000/accordions')
+        fetch('https://gardening-server-six.vercel.app/accordions')
             .then(res => res.json())
             .then(data => setAccordions(data));
     }, [])

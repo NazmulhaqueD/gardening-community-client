@@ -12,11 +12,11 @@ const Navbar = () => {
     console.log(user?.photoURL, dropDownOpen)
 
     const navLink = <>
-        <NavLink to='/'><li>Home</li></NavLink>
-        <NavLink to='/exploreGardeners'><li>Explore Gardeners</li></NavLink>
-        <NavLink to='/browseTips'><li>Browse Tips</li></NavLink>
-        <NavLink to='/shareTips'><li>Share a Garden Tip</li></NavLink>
-        <NavLink to='/myTips'><li>My Tips</li></NavLink>
+        <NavLink className='text-[16px] md:text-xl font-bold md:mx-4' to='/'><li>Home</li></NavLink>
+        <NavLink className='text-[16px] md:text-xl font-bold md:mx-4' to='/exploreGardeners'><li>Explore Gardeners</li></NavLink>
+        <NavLink className='text-[16px] md:text-xl font-bold md:mx-4' to='/browseTips'><li>Browse Tips</li></NavLink>
+        <NavLink className='text-[16px] md:text-xl font-bold md:mx-4' to='/shareTips'><li>Share a Garden Tip</li></NavLink>
+        <NavLink className='text-[16px] md:text-xl font-bold md:mx-4' to='/myTips'><li>My Tips</li></NavLink>
         {
             user ? "" : <NavLink to='/login'><li>Login</li></NavLink>
         }
@@ -53,7 +53,7 @@ const Navbar = () => {
                             </div>
                             <ul
                                 tabIndex={0}
-                                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow">
+                                className="menu  menu-sm mobileMenuList dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 shadow px-4 ">
                                 {navLink}
                             </ul>
                         </div>
@@ -65,14 +65,14 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="navbar-end">
-                        <button onClick={() => setIsDark(!isDark)} className='m-1 p-1 cursor-pointer rounded-full border-2 border-e-teal-400'>
-                            {isDark ? <MdOutlineDarkMode size={25} />
-                                : <MdDarkMode size={25} />}
+                        <button onClick={() => setIsDark(!isDark)} className='mr-6 p-1 cursor-pointer rounded-full border-2 border-e-teal-400'>
+                            {isDark ? <MdOutlineDarkMode size={35} />
+                                : <MdDarkMode size={35} />}
                         </button>
-                        <div>
+                        <div >
                             {
                                 user ?
-                                    <span className='relative'>
+                                    <span className='relative flex'>
                                         <img
                                             data-tooltip-id="name"
                                             data-tooltip-content={user?.displayName}

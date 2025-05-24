@@ -8,7 +8,9 @@ const MainLayout = () => {
         <div className='md:max-w-11/12 mx-auto p-2'>
             {/* <Header></Header> */}
             <Navbar></Navbar>
-            <Outlet></Outlet>
+            <div className='min-h-[90vh]'>
+                <Outlet></Outlet>
+            </div>
             <Footer></Footer>
         </div>
     );

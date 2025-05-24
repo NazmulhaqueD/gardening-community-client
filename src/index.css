@@ -1,7 +1,19 @@
 @import "tailwindcss";
 @plugin "daisyui";
+@custom-variant dark (&:where(.dark, .dark *));
 
+.mobileMenuList a {
+  padding: 4px 10px;
+  margin: 2px 0;
+  border-radius: 5px;
+  color: teal;
+}
 
-a.active{
+.mobileMenuList a.active {
+  color: white;
+  background-color: green;
+}
+
+a.active {
   color: teal;
 }

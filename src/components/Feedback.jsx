@@ -11,7 +11,7 @@ const Feedback = () => {
     console.log(feedbacks)
 
     useEffect(() => {
-        fetch('http://localhost:5000/feedBack')
+        fetch('https://gardening-server-six.vercel.app/feedBack')
             .then(res => res.json())
             .then(data => {
                 setFeedbacks(data);
@@ -44,7 +44,7 @@ const Feedback = () => {
                             />
                             <h3 className="text-2xl font-bold">{feedback.name}</h3>
                             <p className="text-gray-500 text-sm">{feedback.date}</p>
-                            <p className="text-center">{feedback.description}</p>
+                            <p className="text-center text-xl italic p-4">{feedback.description}</p>
                         </div>
                     </SwiperSlide>
                 ))}
