@@ -2,7 +2,6 @@ import React from 'react';
 
 const ActiveGardeners = ({ gardeners }) => {
 
-    console.log(gardeners)
     return (
         <div className='bg-base-100 p-4 my-8 md:my-16 rounded-2xl'>
             <h1 className='text-2xl md:text-4xl my-4 md:my-8 text-center font-bold text-green-500'>Active Gardeners</h1>

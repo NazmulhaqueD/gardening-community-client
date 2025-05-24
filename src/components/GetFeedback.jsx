@@ -8,7 +8,6 @@ const GetFeedback = () => {
 
     const { user } = useContext(AuthContext);
     const date = format(new Date(), 'EEE, MMMM d, yyyy, hh:mm a');
-    console.log(date)
 
     const handleGetFeedback = (e) => {
         e.preventDefault();

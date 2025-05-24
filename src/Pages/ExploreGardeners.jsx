@@ -4,7 +4,6 @@ import { useLoaderData } from 'react-router';
 const ExploreGardeners = () => {
 
     const allGardeners = useLoaderData();
-    console.log(allGardeners)
 
     return (
         <div className='py-4 md:py-8 bg-base-300 rounded-b-2xl'>

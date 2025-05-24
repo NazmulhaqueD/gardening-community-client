@@ -14,7 +14,6 @@ const Register = () => {
         const form = e.target;
         const formData = new FormData(form);
         const { name, photo, email, password } = Object.fromEntries(formData.entries());
-        console.log(email, password)
 
         // sign up 
         const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[\W_]).{8,}$/;
@@ -58,7 +57,6 @@ const Register = () => {
                     .catch(error => {
                         toast.error(`${error.message}, please try again`)
                     })
-                console.log(result.user);
             })
             .catch(error => {
                 toast.error(`${error.message}, please try again`)
@@ -85,15 +83,16 @@ const Register = () => {
                 })
                     .then(res => res.json())
                     .then((data) => {
-                        Swal.fire({
-                            position: "top-end",
-                            icon: "success",
-                            title: "You are loggedIn successfully",
-                            showConfirmButton: false,
-                            timer: 1500
-                        });
-                        navigate('/')
-                        console.log(data)
+                        if (data?.insertedId) {
+                            Swal.fire({
+                                position: "top-end",
+                                icon: "success",
+                                title: "You are loggedIn successfully",
+                                showConfirmButton: false,
+                                timer: 1500
+                            });
+                            navigate('/')
+                        }
                     })
             })
             .catch(error => {
@@ -107,16 +106,16 @@ const Register = () => {
             <div className="card-body">
                 <form onSubmit={handleSignUp} className='space-y-4'>
                     <label className="label">Name</label>
-                    <input type="text" className="input" name='name' placeholder="name" required  />
+                    <input type="text" className="input" name='name' placeholder="name" required />
 
                     <label className="label">Email</label>
-                    <input type="email" className="input" name='email' placeholder="Email" required  />
+                    <input type="email" className="input" name='email' placeholder="Email" required />
 
                     <label className="label">Photo</label>
-                    <input type="text" className="input" name='photo' placeholder="Photo URL" required  />
+                    <input type="text" className="input" name='photo' placeholder="Photo URL" required />
 
                     <label className="label">Password</label>
-                    <input type="password" className="input" name='password' placeholder="Password" required  />
+                    <input type="password" className="input" name='password' placeholder="Password" required />
 
                     <div><a className="link link-hover">Forgot password?</a></div>
                     <button className="btn w-full btn-neutral mt-4">SignUp</button>

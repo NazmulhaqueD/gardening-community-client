@@ -4,7 +4,6 @@ import { Typewriter } from 'react-simple-typewriter';
 const Accordion = () => {
 
     const [accordions, setAccordions] = useState([]);
-    console.log(accordions)
     useEffect(() => {
         fetch('https://gardening-server-six.vercel.app/accordions')
             .then(res => res.json())

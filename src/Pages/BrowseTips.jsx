@@ -5,7 +5,6 @@ const BrowseTips = () => {
 
     const initialAllShareTips = useLoaderData();
     const [allShareTips, setAllShareTips] = useState(initialAllShareTips)
-    console.log(allShareTips);
 
     const handleSearch = (e) => {
         e.preventDefault();
@@ -16,8 +15,6 @@ const BrowseTips = () => {
 
         const filteredTips = initialAllShareTips.filter(tips => tips.Level === select);
         setAllShareTips(filteredTips)
-
-        console.log(select, allShareTips);
     }
 
     return (
@@ -64,7 +61,6 @@ const BrowseTips = () => {
                                     </div>
                                 </td>
                                 <th>
-                                    {console.log(tips._id)}
                                     <NavLink to={`/tipDetails/${tips._id}`}>
                                         <button className="btn btn-success">See More</button>
                                     </NavLink>

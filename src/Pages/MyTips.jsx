@@ -34,7 +34,6 @@ const MyTips = () => {
                     .then(data => {
                         if (data.deletedCount) {
                             const remaining = myTips.filter(single => single._id !== id);
-                            console.log(data)
                             setMyTips(remaining);
                             Swal.fire({
                                 title: "Deleted!",

@@ -4,12 +4,12 @@ import { AuthContext } from '../Auth/AuthProvider';
 import { MdDarkMode, MdOutlineDarkMode } from 'react-icons/md';
 import Swal from 'sweetalert2';
 import { Tooltip } from 'react-tooltip';
+import { toast } from 'react-toastify';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
     const [isDark, setIsDark] = useState(false);
     const [dropDownOpen, setDropDownOpen] = useState(false)
-    console.log(user?.photoURL, dropDownOpen)
 
     const navLink = <>
         <NavLink className='text-[16px] md:text-xl font-bold ' to='/'><li>Home</li></NavLink>
@@ -34,7 +34,7 @@ const Navbar = () => {
                 });
             })
             .catch(error => {
-                console.log(error.message)
+                toast.error(`${error.message}`)
             })
     }
 
@@ -57,7 +57,7 @@ const Navbar = () => {
                                 {navLink}
                             </ul>
                         </div>
-                        <a className="text-2xl md:text-3xl font-bold text-success">Gardening</a>
+                        <a className="text-3xl md:text-5xl font-bold text-success">Greenest</a>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1 flex gap-6 font-semibold">

@@ -10,7 +10,6 @@ import GetFeedback from '../components/GetFeedback';
 
 const Home = () => {
     const gardeners = useLoaderData();
-    console.log(gardeners);
     return (
         <div>
             <Banner></Banner>

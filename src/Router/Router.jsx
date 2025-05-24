@@ -14,6 +14,7 @@ import TipDetails from "../Pages/TipDetails";
 import UpdateTip from "../Pages/UpdateTip";
 import PrivateRout from "../components/PrivateRout";
 import Loader from "../components/Loader";
+import Error from "../components/Error";
 
 
 export const router = createBrowserRouter([
@@ -71,6 +72,6 @@ export const router = createBrowserRouter([
   },
   {
     path: '/*',
-    element: <p>error page</p>
+    element: <Error></Error>
   }
 ]);

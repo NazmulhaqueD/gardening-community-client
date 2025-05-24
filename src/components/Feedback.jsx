@@ -8,7 +8,6 @@ import { Pagination, Navigation } from 'swiper/modules';
 const Feedback = () => {
 
     const [feedbacks, setFeedbacks] = useState([]);
-    console.log(feedbacks)
 
     useEffect(() => {
         fetch('https://gardening-server-six.vercel.app/feedBack')

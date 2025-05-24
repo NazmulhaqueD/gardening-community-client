@@ -15,7 +15,6 @@ const TipDetails = () => {
 
     const [likeCount, setLikeCount] = useState(tips.totalLiked);
     const [liked, setLiked] = useState(false);
-    console.log(likeCount);
 
     useEffect(() => {
         fetch(`https://gardening-server-six.vercel.app/shareTips/${id}`)
@@ -26,7 +25,6 @@ const TipDetails = () => {
                 // loggedIn user already isLogged?
                 const isLikedBefore = data.likedUsers?.some(likedUser => likedUser.email === user.email);
                 setLiked(isLikedBefore);
-                console.log(isLikedBefore)
             })
     }, [id, user.email, liked])
 
@@ -50,11 +48,9 @@ const TipDetails = () => {
         })
             .then(res => res.json())
             .then(data => {
-                console.log(data);
                 if (data.acknowledged) {
                     setLikeCount(prev => newLiked ? prev + 1 : prev - 1)
                 }
-                console.log(data);
             })
     }
 

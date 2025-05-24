@@ -9,7 +9,6 @@ const Login = () => {
     const { signIn, setUser, signInWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
-    console.log(location.state)
 
     const handleSignIn = (e) => {
         e.preventDefault();
@@ -19,7 +18,6 @@ const Login = () => {
         // sign in with firebase
         signIn(email, password)
             .then(result => {
-                // console.log(result.user)
                 setUser(result.user)
                 Swal.fire({
                     position: "top-end",

@@ -4,7 +4,6 @@ import { BiLike } from 'react-icons/bi';
 const TopTrending = () => {
 
     const [topTips, setTopTips] = useState([]);
-    console.log(topTips)
 
     useEffect(() => {
         fetch('https://gardening-server-six.vercel.app/topLikedTips')

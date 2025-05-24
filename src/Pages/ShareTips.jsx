@@ -12,7 +12,6 @@ const ShareTips = () => {
         const formData = new FormData(form);
         const shareTips = Object.fromEntries(formData.entries());
         const shareTipsData = { totalLiked: 0, likedUsers: [], ...shareTips }
-        console.log(shareTipsData)
 
         // fetch post data in mongodb
         fetch('https://gardening-server-six.vercel.app/shareTips', {

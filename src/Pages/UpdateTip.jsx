@@ -7,14 +7,12 @@ const UpdateTip = () => {
     const { id } = useParams();
     const { user } = useContext(AuthContext)
     const tips = useLoaderData();
-    console.log(tips);
 
     const handleUpdateTips = (e) => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
         const updateTipsData = Object.fromEntries(formData.entries());
-        // console.log(updateTipsData)
 
         fetch(`https://gardening-server-six.vercel.app/updateTips/${id}`, {
             method: 'PUT',
