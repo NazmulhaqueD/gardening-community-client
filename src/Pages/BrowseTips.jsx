@@ -29,7 +29,7 @@ const BrowseTips = () => {
                         <option>Medium</option>
                         <option>Hard</option>
                     </select>
-                    <input type="submit" className='btn px-10 absolute right-0 z-10' value={'Search'} />
+                    <input type="submit" className='px-10 absolute right-0 top-1 text-xl z-10 hover:text-success' value={'Search'} />
                 </form>
                 <table className="table w-full md:w-8/12 mx-auto inset-shadow-sm inset-shadow-indigo-500/100 p-4 md:p-8 rounded-2xl">
                     {/* head */}
@@ -55,9 +55,9 @@ const BrowseTips = () => {
                                 <td>{tips.title} </td>
                                 <td>{tips.name}</td>
                                 <td>{tips.category}</td>
-                                <td>
+                                <td >
                                     <div className=' py-2'>
-                                        <img className='max-h-16 rounded-xl' src={tips.photo} alt="" />
+                                        <img className='h-16 w-36 rounded-xl' src={tips.photo} alt="" />
                                     </div>
                                 </td>
                                 <th>
