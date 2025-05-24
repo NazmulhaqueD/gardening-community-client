@@ -59,9 +59,8 @@ const MyTips = () => {
                         <th>Title</th>
                         <th>Category</th>
                         <th>Status</th>
-                        <th>Date</th>
-                        <th>Update</th>
-                        <th>Delete</th>
+                        <th className='text-center'>Update</th>
+                        <th className='text-center'>Delete</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -72,9 +71,8 @@ const MyTips = () => {
                             <td className='py-10'>{tips.title}</td>
                             <td>{tips.category}</td>
                             <td>{tips.availability}</td>
-                            <td>12/08/2025</td>
-                            <td><NavLink to={`/updateTip/${tips._id}`} className={'btn btn-success'}>Update</NavLink></td>
-                            <td><button onClick={() => handleTipsDelete(tips._id)} className='btn btn-error'>Delete</button></td>
+                            <td className='text-center'><NavLink to={`/updateTip/${tips._id}`} className={'btn btn-success'}>Update</NavLink></td>
+                            <td className='text-center'><button onClick={() => handleTipsDelete(tips._id)} className='btn btn-error'>Delete</button></td>
                         </tr>)
                     }
                 </tbody>
