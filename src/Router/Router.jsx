@@ -17,6 +17,7 @@ import Loader from "../components/Loader";
 import Error from "../components/Error";
 import DashboardLayout from "../Layout/DashboardLayout";
 import MyProfile from "../Pages/MyProfile";
+import ContactUs from "../components/ContactUs";
 
 
 export const router = createBrowserRouter([
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
         loader: ({ params }) => fetch(`https://gardening-server-six.vercel.app/shareTips/${params.id}`),
         hydrateFallbackElement: <Loader></Loader>,
         element: <UpdateTip></UpdateTip>,
+      },
+      {
+        path: 'contactUs',
+        element: <ContactUs></ContactUs>
       }
     ]
   },

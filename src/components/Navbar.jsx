@@ -6,6 +6,7 @@ import Swal from 'sweetalert2';
 import { Tooltip } from 'react-tooltip';
 import { toast } from 'react-toastify';
 import Theme from './Theme';
+import logo from '../assets/logo.png'
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
@@ -15,6 +16,7 @@ const Navbar = () => {
         <NavLink className='text-[16px]  font-bold ' to='/'><li>Home</li></NavLink>
         <NavLink className='text-[16px]  font-bold ' to='/exploreGardeners'><li>Explore Gardeners</li></NavLink>
         <NavLink className='text-[16px]  font-bold ' to='/browseTips'><li>Browse Tips</li></NavLink>
+        <NavLink className='text-[16px]  font-bold ' to='/contactUs'><li>Contact Us</li></NavLink>
         {
             user ? "" : <NavLink className='text-[16px] font-bold' to='/login'><li>Login</li></NavLink>
         }
@@ -51,7 +53,9 @@ const Navbar = () => {
                                 {navLink}
                             </ul>
                         </div>
-                        <a className="text-3xl md:text-4xl font-bold text-success">Greenest</a>
+                        <a className="text-3xl md:text-4xl font-bold text-success flex items-center">
+                            <img className='w-[60px] h-[32px]' src={logo} alt="" /> <span>Greenest
+                            </span></a>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1 flex gap-6 font-semibold">
