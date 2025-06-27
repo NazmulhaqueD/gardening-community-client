@@ -11,7 +11,7 @@ import GetFeedback from '../components/GetFeedback';
 const Home = () => {
     const gardeners = useLoaderData();
     return (
-        <div>
+        <div className='mt-28'>
             <Banner></Banner>
             <ActiveGardeners gardeners={gardeners}></ActiveGardeners>
             <TopTrending></TopTrending>

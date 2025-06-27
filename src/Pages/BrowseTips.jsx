@@ -8,7 +8,7 @@ const BrowseTips = () => {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        const select = e.target.selectType.value;
+        const select = e.target.value;
         if (select === 'All') {
             return setAllShareTips(initialAllShareTips);
         }
@@ -18,11 +18,11 @@ const BrowseTips = () => {
     }
 
     return (
-        <div className="bg-base-200 py-8 rounded-b-2xl">
-            <h1 className='text-success text-center text-2xl md:text-4xl my-8 font-bold'>All Shared Garden Tips : {allShareTips.length}</h1>
+        <div className="bg-base-200 py-8 rounded-b-2xl mt-28 rounded-xl">
+            <h1 className='text-success text-center text-2xl md:text-4xl font-bold'>All Shared Garden Tips : {allShareTips.length}</h1>
             <div className='overflow-x-auto rounded-sm'>
-                <form onSubmit={handleSearch} className='w-full md:w-8/12 mx-auto my-8 relative z-0'>
-                    <select defaultValue="Search by Difficulty Level" name='selectType' className="select w-full select-secondary">
+                <form className='w-full md:w-8/12 mx-auto my-8 relative z-0'>
+                    <select onChange={handleSearch} defaultValue="Search by Difficulty Level" name='selectType' className="select w-full select-secondary">
                         <option disabled={true}>Search by Difficulty Level</option>
                         <option>All</option>
                         <option>Easy</option>

@@ -12,13 +12,13 @@ const Navbar = () => {
     const [dropDownOpen, setDropDownOpen] = useState(false)
 
     const navLink = <>
-        <NavLink className='text-[16px] md:text-xl font-bold ' to='/'><li>Home</li></NavLink>
-        <NavLink className='text-[16px] md:text-xl font-bold ' to='/exploreGardeners'><li>Explore Gardeners</li></NavLink>
-        <NavLink className='text-[16px] md:text-xl font-bold ' to='/browseTips'><li>Browse Tips</li></NavLink>
-        <NavLink className='text-[16px] md:text-xl font-bold ' to='/shareTips'><li>Share a Garden Tip</li></NavLink>
-        <NavLink className='text-[16px] md:text-xl font-bold ' to='/myTips'><li>My Tips</li></NavLink>
+        <NavLink className='text-[16px]  font-bold ' to='/'><li>Home</li></NavLink>
+        <NavLink className='text-[16px]  font-bold ' to='/exploreGardeners'><li>Explore Gardeners</li></NavLink>
+        <NavLink className='text-[16px]  font-bold ' to='/browseTips'><li>Browse Tips</li></NavLink>
+        <NavLink className='text-[16px]  font-bold ' to='/shareTips'><li>Share a Garden Tip</li></NavLink>
+        <NavLink className='text-[16px]  font-bold ' to='/myTips'><li>My Tips</li></NavLink>
         {
-            user ? "" : <NavLink className='text-[16px] md:text-xl font-bold' to='/login'><li>Login</li></NavLink>
+            user ? "" : <NavLink className='text-[16px] font-bold' to='/login'><li>Login</li></NavLink>
         }
     </>
 
@@ -43,9 +43,9 @@ const Navbar = () => {
     }, [isDark])
 
     return (
-        <div>
+        <div className='w-full md:w-11/12 mx-auto fixed top-0 z-20 mb-36'>
             <nav>
-                <div className="navbar bg-base-200 shadow-sm">
+                <div className="navbar bg-base-200 shadow-sm mb-6 py-4">
                     <div className="navbar-start">
                         <div className="dropdown">
                             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -57,7 +57,7 @@ const Navbar = () => {
                                 {navLink}
                             </ul>
                         </div>
-                        <a className="text-3xl md:text-5xl font-bold text-success">Greenest</a>
+                        <a className="text-3xl md:text-4xl font-bold text-success">Greenest</a>
                     </div>
                     <div className="navbar-center hidden lg:flex">
                         <ul className="menu menu-horizontal px-1 flex gap-6 font-semibold">

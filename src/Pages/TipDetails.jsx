@@ -55,7 +55,7 @@ const TipDetails = () => {
     }
 
     return (
-        <div className='bg-base-200 w-full'>
+        <div className='bg-base-200 w-full mt-28'>
             <div className="w-full md:max-w-9/12 mx-auto grid grid-cols-1 md:grid-cols-12 gap-6 py-16 px-4">
                 <figure className='col-span-12 md:col-span-7'>
                     <img

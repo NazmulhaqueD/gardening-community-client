@@ -6,9 +6,9 @@ const ExploreGardeners = () => {
     const allGardeners = useLoaderData();
 
     return (
-        <div className='py-4 md:py-8 bg-base-300 rounded-b-2xl'>
+        <div className='py-4 md:py-8 bg-base-300 rounded-b-2xl mt-28 rounded-xl'>
             <h1 className='text-2xl md:text-4xl my-4 md:my-8 text-center text-success font-bold'>There Are All Gardeners Here: ({allGardeners.length})</h1>
-            <div className='md:max-w-8/12 mx-auto grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 rounded-2xl'>
+            <div className='w-full grid gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 px-4 rounded-2xl'>
                 {
                     allGardeners?.map(gardener => <div
                         key={gardener._id}
@@ -17,7 +17,7 @@ const ExploreGardeners = () => {
                         <div className='overflow-hidden'>
                             <img className='w-full h-[300px] pb-6 rounded-2xl transition-transform duration-300 hover:scale-105' src={gardener.image} alt="" />
                         </div>
-                        <div className='space-y-3 text-center bg-base-200 p-4'>
+                        <div className='space-y-3 bg-base-200 p-4'>
                             <h1 className='text-xl font-semibold text-shadow-lg'>{gardener.name}</h1>
                             <p>{gardener.age} years, {gardener.gender}</p>
                             <p>Experience: {gardener.experience}</p>
