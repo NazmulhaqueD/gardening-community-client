@@ -1,22 +1,22 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { NavLink } from 'react-router';
 import { AuthContext } from '../Auth/AuthProvider';
 import { MdDarkMode, MdOutlineDarkMode } from 'react-icons/md';
 import Swal from 'sweetalert2';
 import { Tooltip } from 'react-tooltip';
 import { toast } from 'react-toastify';
+import Theme from './Theme';
 
 const Navbar = () => {
     const { user, logOut } = useContext(AuthContext);
-    const [isDark, setIsDark] = useState(false);
     const [dropDownOpen, setDropDownOpen] = useState(false)
 
     const navLink = <>
         <NavLink className='text-[16px]  font-bold ' to='/'><li>Home</li></NavLink>
         <NavLink className='text-[16px]  font-bold ' to='/exploreGardeners'><li>Explore Gardeners</li></NavLink>
         <NavLink className='text-[16px]  font-bold ' to='/browseTips'><li>Browse Tips</li></NavLink>
-        <NavLink className='text-[16px]  font-bold ' to='/shareTips'><li>Share a Garden Tip</li></NavLink>
-        <NavLink className='text-[16px]  font-bold ' to='/myTips'><li>My Tips</li></NavLink>
+        {/* <NavLink className='text-[16px]  font-bold ' to='/shareTips'><li>Share a Garden Tip</li></NavLink> */}
+        {/* <NavLink className='text-[16px]  font-bold ' to='/myTips'><li>My Tips</li></NavLink> */}
         {
             user ? "" : <NavLink className='text-[16px] font-bold' to='/login'><li>Login</li></NavLink>
         }
@@ -37,10 +37,6 @@ const Navbar = () => {
                 toast.error(`${error.message}`)
             })
     }
-
-    useEffect(() => {
-        document.querySelector('html').setAttribute('data-theme', isDark ? 'dark' : 'light')
-    }, [isDark])
 
     return (
         <div className='w-full md:w-11/12 mx-auto fixed top-0 z-20 mb-36'>
@@ -65,10 +61,14 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div className="navbar-end">
-                        <button onClick={() => setIsDark(!isDark)} className='mr-6 p-1 cursor-pointer rounded-full border-2 border-e-teal-400'>
-                            {isDark ? <MdOutlineDarkMode size={35} />
-                                : <MdDarkMode size={35} />}
-                        </button>
+                        <div className='flex items-center gap-6'>
+                            <NavLink className='text-[16px]  font-bold ' to='/myProfile'>DashBoard</NavLink>
+                            {/* <button onClick={() => setIsDark(!isDark)} className='mr-6 p-1 cursor-pointer rounded-full border-2 border-e-teal-400'>
+                                {isDark ? <MdOutlineDarkMode size={35} />
+                                    : <MdDarkMode size={35} />}
+                            </button> */}
+                            <Theme></Theme>
+                        </div>
                         <div >
                             {
                                 user ?

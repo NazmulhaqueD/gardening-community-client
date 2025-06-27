@@ -15,6 +15,8 @@ import UpdateTip from "../Pages/UpdateTip";
 import PrivateRout from "../components/PrivateRout";
 import Loader from "../components/Loader";
 import Error from "../components/Error";
+import DashboardLayout from "../Layout/DashboardLayout";
+import MyProfile from "../Pages/MyProfile";
 
 
 export const router = createBrowserRouter([
@@ -32,21 +34,13 @@ export const router = createBrowserRouter([
         path: '/exploreGardeners',
         loader: () => fetch("https://gardening-server-six.vercel.app/allGardeners"),
         element: <ExploreGardeners></ExploreGardeners>,
-        hydrateFallbackElement: <Loader></Loader>       
+        hydrateFallbackElement: <Loader></Loader>
       },
       {
         path: '/browseTips',
         loader: () => fetch('https://gardening-server-six.vercel.app/shareTips'),
         hydrateFallbackElement: <Loader></Loader>,
         element: <BrowseTips></BrowseTips>
-      },
-      {
-        path: '/shareTips',
-        element: <PrivateRout><ShareTips></ShareTips></PrivateRout>
-      },
-      {
-        path: '/myTips',
-        element: <PrivateRout><MyTips></MyTips></PrivateRout>
       },
       {
         path: '/login',
@@ -68,6 +62,26 @@ export const router = createBrowserRouter([
         hydrateFallbackElement: <Loader></Loader>,
         element: <UpdateTip></UpdateTip>,
       }
+    ]
+  },
+
+  {
+    path: '/',
+    element: <DashboardLayout></DashboardLayout>,
+    children: [
+      {
+        path: 'myProfile',
+        element: <MyProfile></MyProfile>
+      },
+      {
+        path: '/shareTips',
+        element: <PrivateRout><ShareTips></ShareTips></PrivateRout>
+      },
+
+      {
+        path: '/myTips',
+        element: <PrivateRout><MyTips></MyTips></PrivateRout>
+      },
     ]
   },
   {
