@@ -50,9 +50,9 @@ const MyTips = () => {
 
 
     return (
-        <div className="overflow-x-auto bg-base-300 py-8 bg rounded-xl">
+        <div className="overflow-x-auto bg-base-300 py-8 bg rounded-xl p-4">
             <h1 className='text-success text-3xl md:text-4xl my-8 text-center font-bold'> My Garden Tips (total: {myTips?.length})</h1>
-            <table className={`table w-full md:max-w-8/12 mx-auto`}>
+            <table className={`table w-full `}>
                 {/* head */}
                 <thead className='bg-gray-300 text-xl font-bold text-black'>
                     <tr>

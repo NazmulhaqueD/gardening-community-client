@@ -15,8 +15,6 @@ const Navbar = () => {
         <NavLink className='text-[16px]  font-bold ' to='/'><li>Home</li></NavLink>
         <NavLink className='text-[16px]  font-bold ' to='/exploreGardeners'><li>Explore Gardeners</li></NavLink>
         <NavLink className='text-[16px]  font-bold ' to='/browseTips'><li>Browse Tips</li></NavLink>
-        {/* <NavLink className='text-[16px]  font-bold ' to='/shareTips'><li>Share a Garden Tip</li></NavLink> */}
-        {/* <NavLink className='text-[16px]  font-bold ' to='/myTips'><li>My Tips</li></NavLink> */}
         {
             user ? "" : <NavLink className='text-[16px] font-bold' to='/login'><li>Login</li></NavLink>
         }
@@ -62,11 +60,9 @@ const Navbar = () => {
                     </div>
                     <div className="navbar-end">
                         <div className='flex items-center gap-6'>
-                            <NavLink className='text-[16px]  font-bold ' to='/myProfile'>DashBoard</NavLink>
-                            {/* <button onClick={() => setIsDark(!isDark)} className='mr-6 p-1 cursor-pointer rounded-full border-2 border-e-teal-400'>
-                                {isDark ? <MdOutlineDarkMode size={35} />
-                                    : <MdDarkMode size={35} />}
-                            </button> */}
+                            {
+                                user?.email && <NavLink className='text-[16px]  font-bold ' to='/myProfile'>DashBoard</NavLink>
+                            }
                             <Theme></Theme>
                         </div>
                         <div >
