@@ -20,6 +20,9 @@ const Navbar = () => {
         {
             user ? "" : <NavLink className='text-[16px] font-bold' to='/login'><li>Login</li></NavLink>
         }
+        {
+            user?.email && <NavLink className='text-[16px]  font-bold ' to='/myProfile'>DashBoard</NavLink>
+        }
     </>
 
     const handleLogOut = () => {
@@ -54,7 +57,7 @@ const Navbar = () => {
                             </ul>
                         </div>
                         <a className="text-3xl md:text-4xl font-bold text-success flex items-center">
-                            <img className='w-[60px] h-[32px]' src={logo} alt="" /> <span>Greenest
+                            <img className='w-[60px] h-[40px]' src={logo} alt="" /> <span className='hidden lg:flex'>Greenest
                             </span></a>
                     </div>
                     <div className="navbar-center hidden lg:flex">
@@ -64,9 +67,7 @@ const Navbar = () => {
                     </div>
                     <div className="navbar-end">
                         <div className='flex items-center gap-6'>
-                            {
-                                user?.email && <NavLink className='text-[16px]  font-bold ' to='/myProfile'>DashBoard</NavLink>
-                            }
+
                             <Theme></Theme>
                         </div>
                         <div >

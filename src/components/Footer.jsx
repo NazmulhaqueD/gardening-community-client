@@ -1,29 +1,25 @@
 import React from 'react';
 import { NavLink } from 'react-router';
+import logo from '../assets/logo.png'
 
 const Footer = () => {
     return (
-        <footer className="footer sm:footer-horizontal bg-base-300 text-base-content mt-8 rounded-2xl p-10">
+        <footer className="footer sm:footer-horizontal bg-base-300 text-base-content mt-8 rounded-2xl p-10 items-center">
             <nav>
-                <h6 className="footer-title">Services</h6>
-                <a className="link link-hover">Branding</a>
-                <a className="link link-hover">Design</a>
-                <a className="link link-hover">Marketing</a>
-                <a className="link link-hover">Advertisement</a>
+                <img src={logo} alt="" className='w-64 h-32' />
             </nav>
             <nav>
                 <h6 className="footer-title">Company</h6>
                 <NavLink to='https://web.facebook.com/?_rdc=1&_rdr#' className="link link-hover">About us</NavLink>
                 <NavLink to='https://web.facebook.com/?_rdc=1&_rdr#' className="link link-hover">Contact</NavLink>
 
-                <a className="link link-hover">Jobs</a>
-                <a className="link link-hover">Press kit</a>
+                <a href='https://bdjobs.com/' target='_blank' className="link link-hover">Jobs</a>
             </nav>
             <nav>
                 <h6 className="footer-title">Social</h6>
                 <div className="grid grid-flow-col gap-4">
 
-                    <a href='https://www.youtube.com/' target='_blank'>
+                    <a href='https://x.com/?lang=en' target='_blank'>
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"
