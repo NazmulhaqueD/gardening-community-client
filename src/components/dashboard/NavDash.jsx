@@ -11,7 +11,7 @@ const NavDash = () => {
     const { user } = useContext(AuthContext);
 
     return (
-        <div className='col-span-9 flex items-center justify-between mt-2 bg-base-300 p-4 rounded-xl mb-8'>
+        <div className='col-span-9 flex items-center justify-between mt-2 bg-base-300 p-4 rounded-xl mb-8 mx-4'>
             <h1 className='text-2xl lg:text-4xl font-semibold'>Welcome, {user?.displayName}!</h1>
             <div className='flex items-center gap-4'>
                 <a href="/"><CiHome size={32} /></a>
